@@ -24,3 +24,8 @@ def number_of_leap_days(start_date,end_date):
     #date(1,2,200)
     #if start_date
     return 0
+
+
+def is_leap_day(date):
+    pass
+
