@@ -1,4 +1,7 @@
 
+docker_cli(){
+
+}
 
 
 install_dependencies(){
@@ -11,6 +14,9 @@ format(){
   black .
 }
 
+test(){
+  # TODO
+}
 
 
 @
