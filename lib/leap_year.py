@@ -65,7 +65,7 @@ def start_before_leap_day(date1):
 
 
 def end_after_leap_day(date1):
-     if is_leap_year(date1.year):
+    if is_leap_year(date1.year):
         if date1.month > 2:
             return True
         else:
