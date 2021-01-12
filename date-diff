@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+"""
+Tells the difference between two dates
+"""
+import argparse
+from lib.date import Date
+
+
+# This is a sample Python script.
+
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+
+def diff_dates(start_date, end_date):
+    start = parse(start_date)
+    end = parse(end_date)
+    print("Day difference: " + str(end.diff(start)))
+
+
+def parse(date_string):
+    value = date_string.split("-")
+    if len(value) == 3:
+        return Date(int(value[2]),int(value[1]),int(value[0]))
+    else:
+        raise ValueError("Invalid date format. Needs to be in the month YYYY-mm-dd")
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="""
+        CLI tool to tell the difference between dates.
+        """
+    )
+
+    parser.add_argument("-s", "--start_date", type=str, help="Start date", required=True)
+    parser.add_argument("-e", "--end_date", type=str, help="End date", required=True)
+
+    kwargs = vars(parser.parse_args())
+    diff_dates(**kwargs)
+
+
+if __name__ == "__main__":
+    main()

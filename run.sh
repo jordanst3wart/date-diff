@@ -1,11 +1,16 @@
 
 docker_cli(){
-  echo "TODO"
+  docker build . --tag date-diff:latest
+  docker run date-diff:latest
 }
 
 
 install_dependencies(){
   pip3 install requirements.txt
+}
+
+generate_dependencies(){
+  pip3 freeze > requirements.txt
 }
 
 
