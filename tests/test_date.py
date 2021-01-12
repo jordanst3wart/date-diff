@@ -9,34 +9,31 @@ class TestDateValidation(unittest.TestCase):
             date.Date(1, 1, 1600)
 
     def test_invalid_after_date(self):
-        start_date = date.Date(1, 1, 2004)
-        end_date = date.Date(1, 1, 2005)
-        diff = leap_year.number_of_leap_days(start_date, end_date)
-        self.assertEqual(diff, 1)
+        with self.assertRaises(ValueError):
+            date.Date(1, 1, 3001)
 
     def test_invalid_day(self):
-        start_date = date.Date(1, 1, 2004)
-        end_date = date.Date(1, 1, 2005)
-        diff = leap_year.number_of_leap_days(start_date, end_date)
-        self.assertEqual(diff, 1)
+        with self.assertRaises(ValueError):
+            date.Date(32, 1, 2000)
+
+    def test_invalid_day2(self):
+        with self.assertRaises(ValueError):
+            date.Date(-1, 1, 2000)
 
     def test_invalid_month(self):
-        start_date = date.Date(1, 1, 2004)
-        end_date = date.Date(1, 1, 2005)
-        diff = leap_year.number_of_leap_days(start_date, end_date)
-        self.assertEqual(diff, 1)
+        with self.assertRaises(ValueError):
+            date.Date(1, 13, 2000)
 
     def test_invalid_day_month_combo(self):
-        start_date = date.Date(1, 1, 2004)
-        end_date = date.Date(1, 1, 2005)
-        diff = leap_year.number_of_leap_days(start_date, end_date)
-        self.assertEqual(diff, 1)
+        with self.assertRaises(ValueError):
+            date.Date(31, 4, 2000)
 
     def test_leap_day_true(self):
-        pass
+        date.Date(29, 2, 2000)
 
     def test_leap_day_false(self):
-        pass
+        with self.assertRaises(ValueError):
+            date.Date(29, 2, 2001)
 
 
 class TestDateDiff(unittest.TestCase):

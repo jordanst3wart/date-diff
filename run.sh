@@ -1,6 +1,6 @@
 
 docker_cli(){
-
+  echo "TODO"
 }
 
 
@@ -15,8 +15,8 @@ format(){
 }
 
 test(){
-  # TODO
+  python3 -m unittest discover tests
 }
 
 
-@
+"$@"

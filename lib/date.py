@@ -10,9 +10,9 @@ class Date:
     def __init__(self, day, month, year):
         if 1901 > year or year > 3000:
             raise ValueError("Invalid year")
-        elif 0 > month > 12:
+        elif 0 > month or month > 12:
             raise ValueError("Invalid month")
-        elif 0 > day > 31:
+        elif 0 > day or day > 31:
             raise ValueError("Invalid day")
         elif day == 31 and month in months.short_months:
             raise ValueError("Invalid day")
@@ -39,7 +39,7 @@ class Date:
         # I assume return a negative diff is fine
         if diff > 0:
             diff -= 1
-        else:
+        elif diff < 0:
             diff += 1
         return diff
 
