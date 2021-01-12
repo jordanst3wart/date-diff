@@ -8,7 +8,7 @@ class Date:
     Dates between, and not including 1900 and 3000
     """
     def __init__(self, day, month, year):
-        if 1901 > year > 3000:
+        if 1901 > year or year > 3000:
             raise ValueError("Invalid year")
         elif 0 > month > 12:
             raise ValueError("Invalid month")

@@ -5,9 +5,8 @@ import unittest
 
 class TestDateValidation(unittest.TestCase):
     def test_invalid_before_date(self):
-        #start_date = date.Date(1, 1, 2002)
-        date.Date(1,1,1600)
-        self.assertRaises(ValueError, date.Date, 1, 1, 1600)
+        with self.assertRaises(ValueError):
+            date.Date(1, 1, 1600)
 
     def test_invalid_after_date(self):
         start_date = date.Date(1, 1, 2004)
@@ -98,6 +97,16 @@ class TestDateDiff(unittest.TestCase):
         date1 = date.Date(3, 8, 1983)
         date2 = date.Date(3, 1, 1989)
         self.assertEqual(date1.diff(date2), -1979)
+
+    def test_diff_leap_day(self):
+        date1 = date.Date(1, 3, 2000)
+        date2 = date.Date(28, 2, 2000)
+        self.assertEqual(date1.diff(date2), 1)
+
+    def test_diff_leap_day2(self):
+        date1 = date.Date(1, 3, 2000)
+        date2 = date.Date(29, 2, 2000)
+        self.assertEqual(date1.diff(date2), 0)
 
 
 class TestMonthDiff(unittest.TestCase):
