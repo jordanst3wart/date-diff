@@ -89,6 +89,16 @@ class TestDateDiff(unittest.TestCase):
         date2 = date.Date(4, 7, 1984)
         self.assertEqual(date1.diff(date2), 173)
 
+    def test_diff_example3(self):
+        date1 = date.Date(3, 1, 1989)
+        date2 = date.Date(3, 8, 1983)
+        self.assertEqual(date1.diff(date2), 1979)
+
+    def test_diff_example3_neg(self):
+        date1 = date.Date(3, 8, 1983)
+        date2 = date.Date(3, 1, 1989)
+        self.assertEqual(date1.diff(date2), -1979)
+
 
 class TestMonthDiff(unittest.TestCase):
 

@@ -33,7 +33,7 @@ class Date:
         days = self.day - date.day
         month_to_days = self.__diff_month__( self.month, date.month)
         year_to_days = (self.year - date.year) * 365
-        leap_days = 0
+        leap_days = leap_year.number_of_leap_days(self, date)
         diff = days + month_to_days + year_to_days + leap_days
         # take into account neighbouring days have zero diff
         # I assume return a negative diff is fine
