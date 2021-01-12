@@ -1,4 +1,3 @@
-import lib.leap_year as leap_year
 from lib.leap_year import is_leap_year, number_of_leap_days
 from lib.date import Date
 import unittest

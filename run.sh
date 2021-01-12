@@ -1,7 +1,11 @@
 
-docker_cli(){
+docker_build_cli(){
   docker build . --tag date-diff:latest
-  docker run date-diff:latest
+}
+
+# requires build first
+cli(){
+  docker run date-diff:latest "$@"
 }
 
 

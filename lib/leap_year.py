@@ -1,4 +1,4 @@
-import lib.date as date
+# from lib.date import Date
 
 
 def is_leap_year(year: int):
@@ -43,7 +43,7 @@ def number_of_leap_days(date1, date2):
 
 
 # check for complete years
-def full_leap_years(year1, year2):
+def full_leap_years(year1: int, year2: int):
     days = 0
     if year1 - 3 > year2:
         full_year1 = year1
@@ -65,7 +65,7 @@ def start_before_leap_day(date1):
 
 
 def end_after_leap_day(date1):
-    if is_leap_year(date1.year):
+     if is_leap_year(date1.year):
         if date1.month > 2:
             return True
         else:

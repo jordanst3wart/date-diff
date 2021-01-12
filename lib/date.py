@@ -1,6 +1,5 @@
-import lib.leap_year as leap_year
-import lib.months as months
-# from lib.months import months
+from lib.leap_year import is_leap_year, number_of_leap_days
+from lib.months import days_in_month, short_months
 
 class Date:
     """
@@ -14,11 +13,11 @@ class Date:
             raise ValueError("Invalid month")
         elif 0 > day or day > 31:
             raise ValueError("Invalid day")
-        elif day == 31 and month in months.short_months:
+        elif day == 31 and month in short_months:
             raise ValueError("Invalid day")
         elif day > 29 and month == 2:
             raise ValueError("Invalid day in Feburary")
-        elif day == 29 and month == 2 and not leap_year.is_leap_year(year):
+        elif day == 29 and month == 2 and not is_leap_year(year):
             raise ValueError("Invalid day not leap year")
         else:
             self.day = day
@@ -33,7 +32,7 @@ class Date:
         days = self.day - date.day
         month_to_days = self.__diff_month__(self.month, date.month)
         year_to_days = (self.year - date.year) * 365
-        leap_days = leap_year.number_of_leap_days(self, date)
+        leap_days = number_of_leap_days(self, date)
         diff = days + month_to_days + year_to_days + leap_days
         # take into account neighbouring days have zero diff
         # I assume return a negative diff is fine
@@ -50,11 +49,12 @@ class Date:
             days = self.__diff_month__(month2, month1) * -1
         else:
             for i in range(month2, month1):
-                days += months.days_in_month[i]
+                days += days_in_month[i]
 
         return days
 
     def less_than_or_equal(self, date):
+        # I could reduce repetition here
         if self.year > date.year:
             return False
         elif self.year < date.year:
