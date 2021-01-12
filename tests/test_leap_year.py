@@ -96,6 +96,18 @@ class TestLeapYearDays(unittest.TestCase):
         diff = number_of_leap_days(date1, date2)
         self.assertEqual(diff, 1)
 
+    def test_leap_days_odd_case(self):
+        date1 = Date(2, 1, 2000)
+        date2 = Date(1, 1, 2000)
+        diff = number_of_leap_days(date1, date2)
+        self.assertEqual(diff, 0)
+
+    def test_leap_days_odd_case2(self):
+        date1 = Date(2, 3, 2000)
+        date2 = Date(1, 3, 2000)
+        diff = number_of_leap_days(date1, date2)
+        self.assertEqual(diff, 0)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,3 +1,6 @@
+#!/bin/sh
+# some useful shell functions
+# run like: ./run.sh $function
 
 docker_build_cli(){
   docker build . --tag date-diff:latest
@@ -8,7 +11,7 @@ cli(){
   docker run date-diff:latest "$@"
 }
 
-
+# no dependencies (maybe argparse)
 install_dependencies(){
   pip3 install requirements.txt
 }
