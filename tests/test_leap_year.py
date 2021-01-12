@@ -1,5 +1,5 @@
-import src.leap_year as leap_year
-import src.date as date
+import lib.leap_year as leap_year
+import lib.date as date
 import unittest
 
 

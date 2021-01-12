@@ -1,28 +1,6 @@
-#import months
-#import leap_year
-import src.leap_year as leap_year
-#import src.months as months
+import lib.leap_year as leap_year
+import lib.months as months
 
-
-# set of long months
-# long_months = {}
-# set of short months
-short_months = {4, 6, 9, 11}
-
-days_in_month = {
-    1: 31,
-    2: 28,
-    3: 31,
-    4: 30,
-    5: 31,
-    6: 30,
-    7: 31,
-    8: 31,
-    9: 30,
-    10: 31,
-    11: 30,
-    12: 31,
-}
 
 
 class Date:
@@ -36,7 +14,7 @@ class Date:
             raise ValueError("Invalid month")
         elif 0 > day > 31:
             raise ValueError("Invalid day")
-        elif day == 31 and month in short_months:
+        elif day == 31 and month in months.short_months:
             raise ValueError("Invalid day")
         elif day > 29 and month == 2:
             raise ValueError("Invalid day in Feburary")
@@ -53,27 +31,26 @@ class Date:
             return 0
         # break down to days
         days = self.day - date.day
-        month_to_days = self.__diff_month__(date.month)
+        month_to_days = self.__diff_month__( self.month, date.month)
         year_to_days = (self.year - date.year) * 365
         leap_days = 0
         diff = days + month_to_days + year_to_days + leap_days
-        # make neighbouring days have zero diff
+        # take into account neighbouring days have zero diff
+        # I assume return a negative diff is fine
         if diff > 0:
             diff -= 1
         else:
             diff += 1
         return diff
 
-
-
-    def __diff_month__(self, month):
+    def __diff_month__(self, month1, month2):
         days = 0
-        # be negative if counting down
-        for i in range(self.month, month):
-            days += days_in_month[i]
-
-        if self.month < month:
-            days *= -1
+        # negative day case
+        if month2 > month1:
+            days = self.__diff_month__(month2, month1) * -1
+        else:
+            for i in range(month2, month1):
+                days += months.days_in_month[i]
 
         return days
 
