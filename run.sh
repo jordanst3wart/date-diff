@@ -11,16 +11,6 @@ cli(){
   docker run date-diff:latest "$@"
 }
 
-# no dependencies (maybe argparse)
-install_dependencies(){
-  pip3 install requirements.txt
-}
-
-generate_dependencies(){
-  pip3 freeze > requirements.txt
-}
-
-
 format(){
   # use black to format python code
   # pip3 install git+git://github.com/psf/black

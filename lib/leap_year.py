@@ -33,22 +33,30 @@ def number_of_leap_days(date1, date2):
         days += 1
     elif end_after_leap_day(date1) and date1.year != date2.year:
         days += 1
-    elif start_before_leap_day(date2) and end_after_leap_day(date1) and date1.year == date2.year:
+    elif (
+        start_before_leap_day(date2)
+        and end_after_leap_day(date1)
+        and date1.year == date2.year
+    ):
         days += 1
-    elif start_before_leap_day(date2) and end_after_leap_day(date1) and date1.year != date2.year:
+    elif (
+        start_before_leap_day(date2)
+        and end_after_leap_day(date1)
+        and date1.year != date2.year
+    ):
         days += 2
 
-    #if start_before_leap_day(date2):
+    # if start_before_leap_day(date2):
     #    days += 1
     #    print("before")
-    #if end_after_leap_day(date1):
+    # if end_after_leap_day(date1):
     #    days += 1
     #    print("after")
-    #if (
+    # if (
     #    date1.year == date2.year
     #    and end_after_leap_day(date1)
     #    and start_before_leap_day(date2)
-    #):
+    # ):
     #    print("here")
     #    days -= 1
     return days
