@@ -42,7 +42,7 @@ def number_of_leap_days(date1, date2):
 def full_leap_years(year1, year2):
     days = 0
     if year1 - 3 > year2:
-        full_year1 = year1 - 1
+        full_year1 = year1
         full_year2 = year2 + 1
         for i in range(full_year2, full_year1):
             if is_leap_year(i):

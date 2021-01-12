@@ -90,8 +90,6 @@ class TestDateDiff(unittest.TestCase):
         self.assertEqual(date1.diff(date2), 173)
 
 
-
-
 class TestMonthDiff(unittest.TestCase):
 
     def test_diff_diff_month(self):
@@ -105,6 +103,44 @@ class TestMonthDiff(unittest.TestCase):
     def test_diff_diff_month2_neg(self):
         date1 = date.Date(2, 6, 2022)
         self.assertEqual(-61, date1.__diff_month__(6,8))
+
+
+class TestLessThanOrEqual(unittest.TestCase):
+
+    def test_less_than_year(self):
+        date1 = date.Date(22, 6, 2023)
+        date2 = date.Date(22, 6, 2021)
+        self.assertFalse(date1.less_than_or_equal(date2))
+
+    def test_less_than_month(self):
+        date1 = date.Date(22, 6, 2023)
+        date2 = date.Date(22, 5, 2023)
+        self.assertFalse(date1.less_than_or_equal(date2))
+
+    def test_less_than_day(self):
+        date1 = date.Date(22, 6, 2023)
+        date2 = date.Date(21, 6, 2023)
+        self.assertFalse(date1.less_than_or_equal(date2))
+
+    def test_less_than_year_neg(self):
+        date1 = date.Date(22, 6, 2023)
+        date2 = date.Date(22, 6, 2025)
+        self.assertTrue(date1.less_than_or_equal(date2))
+
+    def test_less_than_month_neg(self):
+        date1 = date.Date(22, 6, 2023)
+        date2 = date.Date(22, 7, 2023)
+        self.assertTrue(date1.less_than_or_equal(date2))
+
+    def test_less_than_day_neg(self):
+        date1 = date.Date(22, 6, 2023)
+        date2 = date.Date(23, 6, 2023)
+        self.assertTrue(date1.less_than_or_equal(date2))
+
+    def test_less_than_equal(self):
+        date1 = date.Date(22, 6, 2023)
+        date2 = date.Date(22, 6, 2023)
+        self.assertTrue(date1.less_than_or_equal(date2))
 
 
 if __name__ == "__main__":
