@@ -1,5 +1,3 @@
-
-
 # set of short months
 short_months = {4, 6, 9, 11}
 

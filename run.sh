@@ -5,12 +5,13 @@ docker_cli(){
 
 
 install_dependencies(){
-  pip install requirements.txt
+  pip3 install requirements.txt
 }
 
 
 format(){
-  pip install git+git://github.com/psf/black
+  # use black to format python code
+  # pip3 install git+git://github.com/psf/black
   black .
 }
 

@@ -33,7 +33,11 @@ def number_of_leap_days(date1, date2):
         days += 1
     if end_after_leap_day(date1):
         days += 1
-    if date1.year == date2.year and end_after_leap_day(date1) and start_before_leap_day(date2):
+    if (
+        date1.year == date2.year
+        and end_after_leap_day(date1)
+        and start_before_leap_day(date2)
+    ):
         days -= 1
     return days
 
@@ -66,4 +70,3 @@ def end_after_leap_day(date1):
             return True
         else:
             return False
-

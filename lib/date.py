@@ -2,11 +2,11 @@ import lib.leap_year as leap_year
 import lib.months as months
 
 
-
 class Date:
     """
     Dates between, and not including 1900 and 3000
     """
+
     def __init__(self, day, month, year):
         if 1901 > year or year > 3000:
             raise ValueError("Invalid year")
@@ -31,7 +31,7 @@ class Date:
             return 0
         # break down to days
         days = self.day - date.day
-        month_to_days = self.__diff_month__( self.month, date.month)
+        month_to_days = self.__diff_month__(self.month, date.month)
         year_to_days = (self.year - date.year) * 365
         leap_days = leap_year.number_of_leap_days(self, date)
         diff = days + month_to_days + year_to_days + leap_days
@@ -71,7 +71,3 @@ class Date:
             return True
 
         return True
-
-
-
-
