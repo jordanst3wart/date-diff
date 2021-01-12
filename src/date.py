@@ -48,12 +48,23 @@ class Date:
             self.year = year
 
     def diff(self, date):
+        # same day return 0
+        if date.year == self.year and date.month == self.month and date.day == self.day:
+            return 0
         # break down to days
         days = self.day - date.day
-        month_to_days = self.__diff_month__(self,date.month)
+        month_to_days = self.__diff_month__(date.month)
         year_to_days = (self.year - date.year) * 365
         leap_days = 0
-        return days + month_to_days + year_to_days + leap_days
+        diff = days + month_to_days + year_to_days + leap_days
+        # make neighbouring days have zero diff
+        if diff > 0:
+            diff -= 1
+        else:
+            diff += 1
+        return diff
+
+
 
     def __diff_month__(self, month):
         days = 0
