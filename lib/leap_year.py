@@ -3,7 +3,8 @@ import lib.date as date
 
 def is_leap_year(year: int):
     """
-    Returns true if a leap year
+    :year year: the year
+    :return: true if a leap year
     """
     if year % 4 != 0:
         return False
@@ -16,9 +17,14 @@ def is_leap_year(year: int):
 
 
 def number_of_leap_days(date1, date2):
+    """
+    :param date1: a date value
+    :param date2: a date value
+    :return: the number of leap days between two dates
+    """
     days = 0
     # negative case
-    if date1 < date2:
+    if date1.less_than_or_equal(date2):
         return number_of_leap_days(date2, date1) * -1
 
     days += full_leap_years(date1.year, date2.year)
@@ -44,19 +50,19 @@ def full_leap_years(year1, year2):
     return days
 
 
-def start_before_leap_day(date):
-    if is_leap_year(date.year):
-        if date.month < 2:
+def start_before_leap_day(date1):
+    if is_leap_year(date1.year):
+        if date1.month < 2:
             return True
-        elif date.month == 2 and date.day < 29:
+        elif date1.month == 2 and date1.day < 29:
             return True
         else:
             return False
 
 
-def end_after_leap_day(date):
-    if is_leap_year(date.year):
-        if date.month > 2:
+def end_after_leap_day(date1):
+    if is_leap_year(date1.year):
+        if date1.month > 2:
             return True
         else:
             return False

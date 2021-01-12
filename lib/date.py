@@ -54,5 +54,24 @@ class Date:
 
         return days
 
+    def less_than_or_equal(self, date):
+        if self.year > date.year:
+            return False
+        elif self.year < date.year:
+            return True
+
+        if self.month > date.month:
+            return False
+        elif self.month < date.month:
+            return True
+
+        if self.day > date.day:
+            return False
+        elif self.day < date.day:
+            return True
+
+        return True
+
+
 
 
